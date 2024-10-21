@@ -1,0 +1,111 @@
+﻿<ui:FluentWindow x:Class="Kino.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kino"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:pages="clr-namespace:Kino.Pages"
+        ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+        ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+        ExtendsContentIntoTitleBar="True"
+        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+        WindowBackdropType="Mica"
+        WindowCornerPreference="Round"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1200">
+    <ui:FluentWindow.InputBindings>
+        <KeyBinding
+            Key="F"
+            Command="{Binding ElementName=AutoSuggestBox, Path=FocusCommand}"
+            Modifiers="Control" />
+    </ui:FluentWindow.InputBindings>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ui:NavigationView 
+	        x:Name="RootNavigation" 
+	        Grid.Row="1" 
+	        PaneDisplayMode="LeftFluent"
+	        FrameMargin="0"
+	        Transition="FadeInWithSlide"
+	        TitleBar="{Binding ElementName=TitleBar, Mode=OneWay}">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem
+                    Content="Główna"
+                    NavigationCacheMode="Enabled"
+                    TargetPageType="{x:Type pages:MainPage}">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:SymbolIcon Symbol="Home24" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+                <ui:NavigationViewItem
+                    Content="Seanse"
+                    NavigationCacheMode="Enabled"
+                    TargetPageType="{x:Type pages:ScreeningPage}">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:SymbolIcon Symbol="MoviesAndTv24" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+            </ui:NavigationView.MenuItems>
+            <ui:NavigationView.FooterMenuItems>
+	            <ui:NavigationViewItem
+		            x:Name="AdminItem"
+		            Content="Admin"
+		            NavigationCacheMode="Enabled"
+		            TargetPageType="{x:Type pages:AdminPage}"
+		            Visibility="Collapsed">
+		            <ui:NavigationViewItem.Icon>
+			            <ui:SymbolIcon Symbol="PersonLock20" />
+		            </ui:NavigationViewItem.Icon>
+	            </ui:NavigationViewItem>
+	            <ui:NavigationViewItem
+		            x:Name="AccountItem"
+		            Content="Konto"
+		            NavigationCacheMode="Enabled"
+		            TargetPageType="{x:Type pages:MyTicketsPage}"
+		            Visibility="Collapsed">
+		            <ui:NavigationViewItem.Icon>
+			            <ui:SymbolIcon Symbol="Person20" />
+		            </ui:NavigationViewItem.Icon>
+	            </ui:NavigationViewItem>
+	            <ui:NavigationViewItem
+		            x:Name="LogoutItem"
+                    Content="Wyloguj"
+                    NavigationCacheMode="Disabled"
+		            Click="OnLogoutButtonClick"
+                    Visibility="Collapsed">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:SymbolIcon Symbol="PersonArrowRight20" />
+                    </ui:NavigationViewItem.Icon>
+                </ui:NavigationViewItem>
+	            <ui:NavigationViewItem
+		            x:Name="LoginItem"
+		            Content="Zaloguj"
+		            NavigationCacheMode="Disabled"
+		            TargetPageType="{x:Type pages:LoginPage}"
+		            Visibility="Collapsed">
+		            <ui:NavigationViewItem.Icon>
+			            <ui:SymbolIcon Symbol="PersonKey20" />
+		            </ui:NavigationViewItem.Icon>
+	            </ui:NavigationViewItem>
+            </ui:NavigationView.FooterMenuItems>
+	        <ui:NavigationView.ContentOverlay>
+		        <Grid>
+			        <ui:SnackbarPresenter x:Name="SnackbarPresenter" />
+		        </Grid>
+	        </ui:NavigationView.ContentOverlay>
+        </ui:NavigationView>
+
+        <ui:TitleBar
+            Title="Kino"
+            Grid.Row="0"
+            Icon="pack://application:,,,/Assets/applicationIcon-256.png" />
+    </Grid>
+</ui:FluentWindow>
+

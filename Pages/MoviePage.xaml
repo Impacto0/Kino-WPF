@@ -1,0 +1,103 @@
+﻿<Page x:Class="Kino.Pages.MoviePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Kino.Pages"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+      ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      mc:Ignorable="d"
+      d:DesignWidth="1200"
+      d:DesignHeight="800"
+      Title="MoviePage">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<ui:BreadcrumbBar
+			Grid.ColumnSpan="2"
+			Margin="30,30,0,30"
+			ItemsSource="{Binding Path=BreadcrumbBarPath}">
+		</ui:BreadcrumbBar>
+		<ui:Card
+			Grid.Row="1"
+			Margin="50,0,50,50">
+			<Border
+				Height="650"
+				Width="450"
+				CornerRadius="20">
+				<Border.Background>
+					<ImageBrush
+						x:Name="MoviePoster"
+						ImageSource="C:\Users\Barto\RiderProjects\Kino\Assets\movie-poster.jpg"
+						RenderOptions.BitmapScalingMode="HighQuality"
+						Stretch="Fill"/>
+				</Border.Background>
+			</Border>
+		</ui:Card>
+		<Grid
+			Grid.Column="1"
+			Grid.Row="1"
+			Margin="-20,20,20,20">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>		
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<Viewbox 
+				Margin="0,100,0,0"
+				Stretch="Uniform">
+			<ui:TextBlock
+				x:Name="MovieTitle"
+				FontSize="64"
+				Text="Schachnovelle"
+				HorizontalAlignment="Center"
+				FontWeight="Bold"/>
+			</Viewbox>
+			<ui:TextBlock
+				Grid.Row="1"
+				Margin="0,20,0,0"
+				x:Name="MovieDescription"
+				FontSize="24"
+				Text="Film reżyserii ... opowiada historię..."
+				TextWrapping="Wrap"
+				HorizontalAlignment="Center"/>
+			<ui:Button
+				Margin="0,100,0,0"
+				Grid.Row="2"
+				Width="200"
+				Height="60"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center"
+				Click="OnBuyTicketButtonClicked">
+				<ui:TextBlock
+					Text="Kup bilet"
+					FontSize="32"/>
+			</ui:Button>
+		</Grid>
+		<ui:RatingControl
+			x:Name="MovieRatingStars"
+			Grid.Row="2"
+			Value="4"
+			IsHitTestVisible="False"
+			Margin="125,0,0,40"
+			HorizontalAlignment="Left"
+			/>
+		<ui:TextBlock
+			x:Name="MovieRatingCount"
+			Grid.Row="2"
+			Text="123 Ocen"
+			Margin="250,0,0,40"
+			HorizontalAlignment="Left"
+			FontSize="30"
+			/>
+	</Grid>
+</Page>

@@ -1,0 +1,153 @@
+﻿<Page x:Class="Kino.Pages.MyTicketsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Kino.Pages"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+      ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      mc:Ignorable="d"
+      d:DesignWidth="1200"
+      d:DesignHeight="800"
+      Title="UserPage">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<ui:TextBlock
+			Text="Moje bilety"
+			FontSize="48"
+			HorizontalAlignment="Center"
+			Margin="0,20,0,00"/>
+		<ui:Card
+			Grid.Row="1"
+			Margin="50,30,50,50">
+			<Border
+				Height="600">
+				<ui:ListView
+					x:Name="TicketsList">
+					<ui:ListViewItem>
+						<ui:Card>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="Auto"/>
+								</Grid.ColumnDefinitions>
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+								</Grid.RowDefinitions>
+								<ui:TextBlock
+									Text="Film"
+									FontSize="24"
+									Grid.Column="0"
+									Grid.Row="0"/>
+								<ui:TextBlock
+									Text="06-10-2024 12:00"
+									FontSize="24"
+									Grid.Column="0"
+									Grid.Row="1"/>
+								<ui:Button
+									Grid.Row="0"
+									Grid.RowSpan="2"
+									Grid.Column="1"
+									VerticalAlignment="Center">
+									<ui:TextBlock
+										FontSize="32"
+										Text="Więcej"/>
+								</ui:Button>
+							</Grid>
+						</ui:Card>
+					</ui:ListViewItem>
+				</ui:ListView>
+			</Border>
+		</ui:Card>
+		<ui:TextBlock
+			Grid.Row="0"
+			Grid.Column="1"
+			Text="O bilecie"
+			FontSize="48"
+			HorizontalAlignment="Center"
+			Margin="0,20,0,00"/>
+		<ui:Card
+			Grid.Row="1"
+			Grid.Column="1"
+			Margin="50,30,50,50">
+			<Border
+				Height="600">
+				<Grid
+					x:Name="MoreInfoGrid"
+					Visibility="Collapsed">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<ui:TextBlock
+						Grid.Row="0"
+						FontSize="42"
+						HorizontalAlignment="Center"
+						Text="Tytuł filmu"/>
+					<ui:TextBlock
+						x:Name="MovieTitle"
+						FontSize="32"
+						HorizontalAlignment="Center"
+						Grid.Row="1"
+						Margin="0,20,0,30"
+						Text="Tytuł"/>
+					<ui:TextBlock
+						Grid.Row="2"
+						FontSize="42"
+						HorizontalAlignment="Center"
+						Text="Data i godzina seansu"/>
+					<ui:TextBlock
+						x:Name="DateAndTime"
+						Grid.Row="3"
+						FontSize="32"
+						HorizontalAlignment="Center"
+						Margin="0,20,0,30"
+						Text="12:00 06-10-2024"/>
+					<ui:TextBlock
+						Grid.Row="4"
+						FontSize="42"
+						HorizontalAlignment="Center"
+						Text="Zarezerwowane miejsce"/>
+					<ui:TextBlock
+						x:Name="Seat"
+						Grid.Row="5"
+						FontSize="32"
+						HorizontalAlignment="Center"
+						Margin="0,20,0,30"
+						Text="rząd 1, miejsce 1"/>
+					<ui:TextBlock
+						Grid.Row="6"
+						FontSize="42"
+						HorizontalAlignment="Center"
+						Text="Zarządzanie"/>
+					<ui:Button
+						x:Name="CancelTicketButton"
+						Grid.Row="7"
+						HorizontalAlignment="Center"
+						Margin="0,20,0,0">
+						<ui:TextBlock
+							FontSize="32"
+							Text="Anuluj rezerwację"/>
+					</ui:Button>
+				</Grid>
+			</Border>
+		</ui:Card>
+	</Grid>
+</Page>

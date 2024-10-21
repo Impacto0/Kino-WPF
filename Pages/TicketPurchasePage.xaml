@@ -1,0 +1,110 @@
+﻿<Page x:Class="Kino.Pages.TicketPurchasePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Kino.Pages"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
+      ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+      mc:Ignorable="d"
+      d:DesignWidth="1200"
+      d:DesignHeight="800"
+      Title="TicketPurchasePage">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<ui:TextBlock
+			x:Name="MovieTitle"
+			Grid.ColumnSpan="2"
+			Text="Zakup biletów na film:"
+			FontSize="32"
+			Margin="40,20,0,20"/>
+		<ui:Card
+			Grid.Row="1"
+			Margin="50,0,0,0">
+			<Border
+				Height="650"
+				Width="450"
+				CornerRadius="20">
+				<Border.Background>
+					<ImageBrush
+						x:Name="MoviePoster"
+						RenderOptions.BitmapScalingMode="HighQuality"
+						Stretch="Fill"/>
+				</Border.Background>
+			</Border>
+		</ui:Card>
+		<ui:Card
+			Grid.Column="1"
+			Grid.Row="1"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center">
+			<Border
+				Width="450"
+				Height="650">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="Auto"></RowDefinition>
+					</Grid.RowDefinitions>
+					<ui:TextBlock
+						Text="Wybierz seans"
+						FontSize="24"
+						HorizontalAlignment="Center"
+						Margin="0,0,0,20"/>
+					<ComboBox 
+						x:Name="ScreeningSelection"
+						ItemsSource="{Binding Path=Screenings}"
+						SelectedValuePath="Key"
+						DisplayMemberPath="Value"
+						SelectionChanged="OnScreeningSelectionChanged"
+						Grid.Row="1"/>
+					<ui:TextBlock
+						Text="Wybierz miejsca (max 5)"
+						FontSize="24"
+						HorizontalAlignment="Center"
+						Grid.Row="2"
+						Margin="0,20,0,20"/>
+					<ComboBox
+						x:Name="SeatSelection"
+						SelectedValuePath="Key"
+						DisplayMemberPath="Value"
+						Grid.Row="3"
+						Margin="0,0,90,0"/>
+					<ui:Button
+						Grid.Row="3"
+						HorizontalAlignment="Right"
+						Click="OnAddSeatButtonClick">
+						<ui:TextBlock
+							FontSize="18"
+							Text="Dodaj"/>
+					</ui:Button>
+					<ui:ListView
+						Grid.Row="4"
+						x:Name="SelectedSeats">
+					</ui:ListView>
+					<ui:Button
+						Grid.Row="5"
+						HorizontalAlignment="Center"
+						Click="OnBuyTicketsButtonClick">
+						<ui:TextBlock
+							FontSize="32"
+							Text="Potwierdź zakup"/>
+					</ui:Button>
+				</Grid>
+			</Border>
+		</ui:Card>
+	</Grid>
+</Page>
